@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:trustn_dev/src/features/chatBot/chatPage.dart';
 import 'package:trustn_dev/src/features/chatBot/chatScreen.dart';
 import 'package:trustn_dev/src/features/fileUpload/audioUploadView.dart';
 import 'package:trustn_dev/src/features/fileUpload/pictureUploadView.dart';
@@ -12,7 +13,7 @@ class ReportView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.teal,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/ic_bg.png"),
             fit: BoxFit.cover,
@@ -22,16 +23,14 @@ class ReportView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                child: Image(
-                  image: AssetImage('assets/images/ic_logo.png'),
-                ),
+              const Image(
+                image: AssetImage('assets/images/ic_logo.png'),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       'TRUST',
                       style: TextStyle(
@@ -64,7 +63,7 @@ class ReportView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 40),
                 child: Column(
-                  children: <Widget>[
+                  children: const <Widget>[
                     Text(
                       'Intelligent Chatbot',
                       style: TextStyle(
@@ -88,7 +87,8 @@ class ReportView extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -106,7 +106,7 @@ class ReportView extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                           child: Row(
-                            children: <Widget>[
+                            children: const <Widget>[
                               Icon(
                                 Icons.camera_alt,
                                 color: Colors.black,
@@ -129,7 +129,7 @@ class ReportView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -144,7 +144,7 @@ class ReportView extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                           child: Row(
-                            children: <Widget>[
+                            children: const <Widget>[
                               Icon(
                                 Icons.mic_outlined,
                                 color: Colors.black,
@@ -167,7 +167,7 @@ class ReportView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -182,7 +182,7 @@ class ReportView extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                           child: Row(
-                            children: <Widget>[
+                            children: const <Widget>[
                               Image(
                                 image: AssetImage(
                                     'assets/images/ic_videoCamera.png'),
@@ -205,7 +205,7 @@ class ReportView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -220,7 +220,7 @@ class ReportView extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                           child: Row(
-                            children: <Widget>[
+                            children: const <Widget>[
                               Image(
                                 image: AssetImage('assets/images/ic_chat.png'),
                               ),

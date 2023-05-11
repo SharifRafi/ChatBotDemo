@@ -1,77 +1,100 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ChatMessage extends StatelessWidget {
-  const ChatMessage({super.key, required this.text, required this.sender});
+  const ChatMessage(
+      {super.key,
+      required this.text,
+      required this.sender,
+      required this.time});
 
   final String text;
   final String sender;
+  final DateTime time;
 
   @override
   Widget build(BuildContext context) {
     bool isUser = sender == 'user';
-
-    // return Scaffold(
-    //   body: Container(
-    //     margin: EdgeInsets.only(top: 8),
-    //     child: Row(
-    //       mainAxisAlignment:
-    //           isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
-    //       crossAxisAlignment: CrossAxisAlignment.center,
-    //       children: [
-    //         if (!isUser)
-    //           CircleAvatar(
-    //             radius: 16,
-    //             backgroundImage: AssetImage('assets/images/ic_logo'),
-    //           ),
-    //         SizedBox(
-    //           width: 16,
-    //         ),
-    //         Container(
-    //           padding: EdgeInsets.all(8),
-    //           constraints: BoxConstraints(
-    //               maxWidth: MediaQuery.of(context).size.width * 0.6),
-    //           color: Colors.white38,
-    //           child: Text(text),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // );
+    final double radius = isUser ? 0 : 6;
+    String formattedDate = DateFormat('h:mm a, dd/MM/yyyy').format(time);
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
-        // isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           if (!isUser)
             const CircleAvatar(
-              radius: 12,
+              radius: 10,
               backgroundImage: AssetImage('assets/images/ic_logo.png'),
             ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 12),
+          if (isUser)
+            Expanded(
               child: Container(
-                padding: EdgeInsets.all(8),
-                constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width * 0.6),
-                color: Colors.black12,
+                width: 50,
+              ),
+            ),
+          Column(
+            crossAxisAlignment:
+                isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 12),
                 child: Text(
-                  text.trim(),
+                  formattedDate,
                   style: const TextStyle(
+                    fontWeight: FontWeight.w300,
                     color: Colors.black,
+                    fontSize: 10,
                   ),
                   textAlign: isUser ? TextAlign.right : TextAlign.left,
                 ),
               ),
-            ),
+              const SizedBox(
+                height: 6,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: Container(
+                  constraints: BoxConstraints(
+                    minWidth: 30,
+                    maxWidth: MediaQuery.of(context).size.width * 0.7,
+                  ),
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.black12,
+                    borderRadius: BorderRadius.only(
+                      topLeft: const Radius.circular(6),
+                      topRight: const Radius.circular(6),
+                      bottomLeft: isUser
+                          ? const Radius.circular(6)
+                          : const Radius.circular(0),
+                      bottomRight: isUser
+                          ? const Radius.circular(0)
+                          : const Radius.circular(6),
+                    ),
+                  ),
+                  child: Text(
+                    text.trim(),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                    ),
+                    textAlign: isUser ? TextAlign.right : TextAlign.left,
+                  ),
+                ),
+              ),
+            ],
           ),
+          if (!isUser)
+            Expanded(
+              child: Container(
+                width: 30,
+              ),
+            ),
         ],
       ),
     );
   }
 }
-
-// .trim().text.bodyText1(context).make().px8()

@@ -72,7 +72,7 @@ class PictureUploadView extends StatelessWidget {
       ),
       backgroundColor: Colors.teal,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/ic_bg.png"),
             fit: BoxFit.cover,
@@ -92,7 +92,7 @@ class PictureUploadView extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                         child: Row(
-                          children: <Widget>[
+                          children: const <Widget>[
                             Icon(
                               Icons.camera_alt,
                               color: Colors.black,
@@ -120,7 +120,7 @@ class PictureUploadView extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                         child: Row(
-                          children: <Widget>[
+                          children: const <Widget>[
                             Icon(
                               Icons.image,
                               color: Colors.black,
