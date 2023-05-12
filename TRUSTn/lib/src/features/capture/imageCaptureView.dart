@@ -1,13 +1,30 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class VideoCaptureView extends StatefulWidget {
-  const VideoCaptureView({Key? key}) : super(key: key);
+class ImageCaptureView extends StatefulWidget {
+  const ImageCaptureView({Key? key}) : super(key: key);
 
   @override
-  State<VideoCaptureView> createState() => _VideoCaptureViewState();
+  State<ImageCaptureView> createState() => _ImageCaptureViewState();
 }
 
-class _VideoCaptureViewState extends State<VideoCaptureView> {
+class _ImageCaptureViewState extends State<ImageCaptureView> {
+  late File _image;
+  final picker = ImagePicker();
+  Future getImage() async {
+    final pickerImage = await picker.getImage(source: ImageSource.camera);
+    // await ImagePicker().pickImage(source: ImageSource.camera);
+
+    setState(() {
+      if (pickerImage != null) {
+        _image = File(pickerImage.path);
+      } else {
+        print('No image selected');
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +108,7 @@ class _VideoCaptureViewState extends State<VideoCaptureView> {
                 child: Column(
                   children: const [
                     Text(
-                      'Press & Hold',
+                      'Capture & Report',
                       style: TextStyle(color: Colors.white),
                     )
                   ],
@@ -101,6 +118,15 @@ class _VideoCaptureViewState extends State<VideoCaptureView> {
           ],
         ),
         // child: _image = null ? Text('No Image') : Image.file(_image),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          getImage();
+        },
+        child: const Icon(
+          Icons.camera,
+          size: 40,
+        ),
       ),
     );
   }

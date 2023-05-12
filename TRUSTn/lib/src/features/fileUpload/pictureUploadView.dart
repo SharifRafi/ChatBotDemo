@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trustn_dev/src/features/capture/imageCaptureView.dart';
 
 class PictureUploadView extends StatelessWidget {
   const PictureUploadView({Key? key}) : super(key: key);
@@ -83,38 +84,49 @@ class PictureUploadView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Card(
-                      color: Colors.white,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
-                        child: Row(
-                          children: const <Widget>[
-                            Icon(
-                              Icons.camera_alt,
-                              color: Colors.black,
-                            ),
-                            SizedBox(
-                              width: 12,
-                            ),
-                            Text(
-                              'Capture a Picture',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                            Spacer(),
-                            Icon(
-                              Icons.arrow_forward,
-                              size: 16,
-                              color: Colors.black,
-                            )
-                          ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ImageCaptureView(),
+                          ),
+                        );
+                      },
+                      child: Card(
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+                          child: Row(
+                            children: const <Widget>[
+                              Icon(
+                                Icons.camera_alt,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Text(
+                                'Capture a Picture',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              Spacer(),
+                              Icon(
+                                Icons.arrow_forward,
+                                size: 16,
+                                color: Colors.black,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Card(
                       color: Colors.white,
                       child: Padding(

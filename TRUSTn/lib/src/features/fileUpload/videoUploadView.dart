@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trustn_dev/src/features/capture/videoCaptureView.dart';
 
 class VideoUploadView extends StatelessWidget {
   const VideoUploadView({Key? key}) : super(key: key);
@@ -72,7 +73,7 @@ class VideoUploadView extends StatelessWidget {
       ),
       backgroundColor: Colors.teal,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/ic_bg.png"),
             fit: BoxFit.cover,
@@ -83,34 +84,45 @@ class VideoUploadView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Card(
-                      color: Colors.white,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.videocam_sharp,
-                              color: Colors.black,
-                            ),
-                            SizedBox(
-                              width: 12,
-                            ),
-                            Text(
-                              'Capture a Video',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                            Spacer(),
-                            Icon(
-                              Icons.arrow_forward,
-                              size: 16,
-                              color: Colors.black,
-                            )
-                          ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const VideoCaptureView(),
+                          ),
+                        );
+                      },
+                      child: Card(
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+                          child: Row(
+                            children: const <Widget>[
+                              Icon(
+                                Icons.videocam_sharp,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Text(
+                                'Record a Video',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              Spacer(),
+                              Icon(
+                                Icons.arrow_forward,
+                                size: 16,
+                                color: Colors.black,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -120,7 +132,7 @@ class VideoUploadView extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                         child: Row(
-                          children: <Widget>[
+                          children: const <Widget>[
                             Icon(
                               Icons.video_camera_back,
                               color: Colors.black,
